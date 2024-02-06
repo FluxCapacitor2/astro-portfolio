@@ -16,7 +16,7 @@ const posts = (await getCollection("blog")).sort(
       <ul class="grid grid-cols-2 gap-8">
         {
           posts.map((post, index) => (
-            <li class="first:col-span-2 first:text-center">
+            <li class="first:col-span-2 col-span-2 lg:col-span-1 lg:first:text-center">
               <a href={`/blog/${post.slug}/`}>
                 <img
                   width={720}
@@ -25,7 +25,7 @@ const posts = (await getCollection("blog")).sort(
                   alt=""
                   class={cn(
                     "object-cover object-top rounded-lg",
-                    index === 0 ? "h-96" : "h-64"
+                    index === 0 ? "h-64 lg:h-96" : "h-64"
                   )}
                 />
                 <h4

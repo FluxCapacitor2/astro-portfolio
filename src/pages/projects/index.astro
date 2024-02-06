@@ -18,7 +18,12 @@ const projects = (await getCollection("projects")).sort((a, b) => {
       <ul class="grid lg:grid-cols-2 gap-8">
         {
           projects.map((project) => (
-            <li class={cn(project.data.featured && "col-span-2")}>
+            <li
+              class={cn(
+                "col-span-2 lg:col-span-1",
+                project.data.featured && "lg:col-span-2"
+              )}
+            >
               <a href={`/projects/${project.slug}/`}>
                 <img
                   width={720}
