@@ -1,0 +1,68 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Button from "../../components/Button.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import TechStack from "../../components/TechStack.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("projects");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"projects">;
+
+const project = Astro.props;
+const { name, description, date, image, source, link } = project.data;
+const { Content } = await project.render();
+---
+
+<Layout {...project.data}>
+  <main>
+    <article class="mx-auto prose dark:prose-invert">
+      <div class="hero-image">
+        {
+          image && (
+            <img
+              width={1020}
+              height={510}
+              src={image.src}
+              alt=""
+              class="rounded-lg aspect-video object-cover"
+            />
+          )
+        }
+      </div>
+      <div class="prose">
+        <div>
+          <div>
+            <FormattedDate date={date} />
+          </div>
+          <h1 class="mb-2">{name}</h1>
+          <TechStack project={project} />
+          <p class="mt-0">{description}</p>
+          <div class="flex gap-2 flex-wrap">
+            {
+              link && (
+                <a href={link} class="no-underline" target="_blank">
+                  <Button variant="primary">View Project</Button>
+                </a>
+              )
+            }
+            {
+              source && (
+                <a href={source} class="no-underline" target="_blank">
+                  <Button variant="secondary">Source Code</Button>
+                </a>
+              )
+            }
+          </div>
+          <hr />
+        </div>
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>

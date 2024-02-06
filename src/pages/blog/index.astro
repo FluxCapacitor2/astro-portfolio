@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Layout from "../../layouts/Layout.astro";
+import { cn } from "../../utils/cn";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout>
+  <main>
+    <h1 class="text-4xl text-center font-semibold my-12">Blog</h1>
+    <section>
+      <ul class="grid grid-cols-2 gap-8">
+        {
+          posts.map((post, index) => (
+            <li class="first:col-span-2 first:text-center">
+              <a href={`/blog/${post.slug}/`}>
+                <img
+                  width={720}
+                  height={360}
+                  src={post.data.image.src}
+                  alt=""
+                  class={cn(
+                    "object-cover object-top rounded-lg",
+                    index === 0 ? "h-96" : "h-64"
+                  )}
+                />
+                <h4
+                  class={cn(
+                    "font-bold mt-2",
+                    index === 0 ? "text-2xl" : "text-xl"
+                  )}
+                >
+                  {post.data.title}
+                </h4>
+                <p class="text-gray-500 dark:text-gray-600">
+                  <FormattedDate date={post.data.date} />
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,15 @@
+---
+import { SITE_TITLE } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header>
+  <nav class="text-lg flex px-4 py-2 justify-between container mx-auto">
+    <h2><a href="/">{SITE_TITLE}</a></h2>
+    <div class="flex gap-4 lg:gap-6">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/projects">Projects</HeaderLink>
+    </div>
+  </nav>
+</header>

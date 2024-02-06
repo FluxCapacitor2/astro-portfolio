@@ -1,0 +1,61 @@
+/* Global styles */
+html {
+  @apply bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:[color-scheme:dark] print:bg-inherit;
+}
+
+/* Rehype Pretty Code styles */
+
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+  }
+}
+
+[data-rehype-pretty-code-figure] {
+  @apply shadow-lg rounded-md;
+}
+
+[data-rehype-pretty-code-figure] > pre {
+  @apply bg-white dark:bg-[#22272e];
+}
+
+[data-rehype-pretty-code-figure] > pre > code[data-theme] {
+  @apply grid;
+}
+
+[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-title] {
+  @apply rounded-t-md border border-neutral-200 bg-neutral-100 px-4 py-2 font-medium dark:border-neutral-800 dark:bg-neutral-950;
+}
+
+[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-caption] {
+  @apply rounded-b-md bg-neutral-100 px-4 py-2 text-sm italic dark:bg-neutral-950 mt-0;
+}
+
+[data-rehype-pretty-code-figure] > [data-rehype-pretty-code-title] + pre {
+  @apply mt-0 pt-2 rounded-t-none;
+}
+
+[data-rehype-pretty-code-figure]:has([data-rehype-pretty-code-caption]) > pre {
+  @apply mb-0 pb-2 rounded-b-none;
+}
+
+span[data-rehype-pretty-code-fragment] > code {
+  @apply rounded-md px-2 py-1;
+}
+
+[data-highlighted-line] {
+  @apply -ml-4 border-l-4 border-l-primary-500 pl-3;
+}
+
+[data-highlighted-line],
+[data-highlighted-line] span {
+  @apply dark:!bg-[#313944] !bg-[#e5f3ff];
+}

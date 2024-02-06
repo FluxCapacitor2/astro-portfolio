@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+import { technologies } from "../consts";
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props;
+---
+
+<p class="mt-2 text-gray-500 dark:text-gray-600 flex gap-1 text-lg flex-wrap">
+  {
+    project.data.tags.map((tag) => (
+      <a href={technologies[tag]?.link} title={technologies[tag]?.name}>
+        <Icon name={technologies[tag]?.icon} />
+      </a>
+    ))
+  }
+</p>

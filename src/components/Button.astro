@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "../utils/cn";
+
+type Props = {
+  variant?: "primary" | "secondary" | "link";
+  size?: "base" | "sm";
+} & HTMLAttributes<"button">;
+
+const { variant = "primary", size = "base", ...props } = Astro.props;
+---
+
+<button
+  {...props}
+  class={cn(
+    variant === "primary" && "bg-primary-600 text-white hover:bg-primary-700",
+    variant === "secondary" &&
+      "bg-primary-100 text-primary-950 hover:bg-primary-200",
+    variant === "link" && "font-medium underline",
+    size === "base" && "px-4 py-1.5",
+    size === "sm" && "px-3 py-1",
+    "mt-4 flex items-center justify-center gap-2 rounded-md font-medium transition-colors"
+  )}
+>
+  <slot />
+</button>

@@ -1,0 +1,29 @@
+---
+import Button from "../components/Button.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<!doctype html>
+<Layout>
+  <main>
+    <section class="text-center mt-36 prose">
+      <h1 class="text-3xl font-bold text-black dark:text-white">
+        👋 Hello! My name is Brendan.
+      </h1>
+
+      <p class="text-balance">
+        I'm a passionate developer and creator with an interest in web
+        development and design, video production, and cybersecurity.
+      </p>
+
+      <div class="flex gap-2 justify-center">
+        <a href="/projects" class="no-underline">
+          <Button variant="primary" size="sm">View projects</Button>
+        </a>
+        <a href="/blog" class="no-underline">
+          <Button variant="secondary" size="sm">Read my blog</Button>
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>

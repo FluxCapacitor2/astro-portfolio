@@ -1,0 +1,55 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { title, date, updatedDate, image } = post.data;
+const { Content } = await post.render();
+---
+
+<Layout {...post.data}>
+  <main>
+    <article class="mx-auto prose dark:prose-invert">
+      <div class="hero-image">
+        {
+          image && (
+            <img
+              width={1020}
+              height={510}
+              src={image.src}
+              alt=""
+              class="rounded-lg aspect-video object-cover"
+            />
+          )
+        }
+      </div>
+      <div class="prose">
+        <div class="title">
+          <div class="date">
+            <FormattedDate date={date} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
+          </div>
+          <h1>{title}</h1>
+          <hr />
+        </div>
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
