@@ -24,4 +24,15 @@ export default defineConfig({
       ],
     ],
   },
+  redirects: {
+    // Blog posts and other pages from my old site
+    "/blog/creating-beautiful-skeleton-loaders-with-react-and-tailwindcss":
+      "/blog/beautiful-skeleton-loading-states",
+    "/blog/running-lighthouse-ci-on-all-modified-next-js-pages-using-github-actions":
+      "/blog/run-lighthouse-ci-on-changed-pages",
+    "/blog/cyberdiscord-open-2023-review-writeup":
+      "/blog/2023-cyberdiscord-open",
+    "/portfolio": "/projects",
+    "/portfolio/media/bluedragon": "/projects/bluedragon",
+  },
 });
