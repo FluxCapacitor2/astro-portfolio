@@ -1,6 +1,6 @@
 ---
 title: How I Sped Up Azure App Service Builds by 10x
-description: "hey"
+description: "How one command shaved 25 minutes off my deployment times."
 date: 2024-02-04
 image: ./gradient.jpg
 ---

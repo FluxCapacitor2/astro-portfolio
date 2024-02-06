@@ -19,7 +19,7 @@ const { name, description, date, image, source, link } = project.data;
 const { Content } = await project.render();
 ---
 
-<Layout {...project.data}>
+<Layout {...project.data} title={name}>
   <main>
     <article class="mx-auto prose dark:prose-invert">
       <div class="hero-image">

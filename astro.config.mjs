@@ -8,7 +8,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bswanson.dev",
+  site: "https://www.bswanson.dev",
   integrations: [mdx(), sitemap(), tailwind(), icon()],
   markdown: {
     syntaxHighlight: false, // Handle syntax highlighting using rehype-pretty-code instead of the built-in solution
