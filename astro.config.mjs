@@ -1,6 +1,7 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import vercel from "@astrojs/vercel/static";
 import { defineConfig } from "astro/config";
 import rehypePrettyCode from "rehype-pretty-code";
 
@@ -10,6 +11,7 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://www.bswanson.dev",
   integrations: [mdx(), sitemap(), tailwind(), icon()],
+  adapter: process.env.VERCEL ? vercel() : undefined,
   markdown: {
     syntaxHighlight: false, // Handle syntax highlighting using rehype-pretty-code instead of the built-in solution
     rehypePlugins: [
