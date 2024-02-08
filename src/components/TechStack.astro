@@ -10,7 +10,7 @@ type Props = {
 const { project } = Astro.props;
 ---
 
-<p class="mt-2 text-gray-500 dark:text-gray-600 flex gap-1 text-lg flex-wrap">
+<p class="mt-2 text-gray-500 dark:text-gray-300 flex gap-1 text-lg flex-wrap">
   {
     project.data.tags.map((tag) => (
       <a href={technologies[tag]?.link} title={technologies[tag]?.name}>
