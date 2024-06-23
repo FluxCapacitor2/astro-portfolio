@@ -239,7 +239,7 @@ For me, the variable's value didn't matter because Oryx automatically deploys Ne
 
 ## Next Steps
 
-> ⚠️ Before following my instructions in this section, please make sure the [repository](https://github.com/ajraczkowski/static-web-apps-deploy) is not deprecated! This is a (hopefully) temporary solution.
+> ⚠️ Before following my instructions in this section, please make sure the [repository](https://github.com/ajraczkowski/static-web-apps-deploy) is not deprecated! This is (hopefully) a temporary solution.
 
 The Azure Static Web Apps deploy action runs in a Docker container, so every time it's invoked, it pulls a Docker image (`mcr.microsoft.com/appsvc/staticappsclient`) to create a container.
 In September 2022, according to a GitHub [issue comment](https://github.com/Azure/static-web-apps/issues/878#issuecomment-1246800871) I found,

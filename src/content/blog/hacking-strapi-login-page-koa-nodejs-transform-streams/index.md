@@ -1,5 +1,5 @@
 ---
-title: Hacking Strapi, Koa Middleware, and Transform Streams
+title: Hacking Strapi with Koa Middleware and Transform Streams
 description: How I used Koa middleware to customize the Strapi login page with an injected inline script.
 date: 2024-06-22T00:00:00-04:00
 image: ./strapi.png
@@ -72,7 +72,7 @@ The middleware function receives a request context and `next` function.
 By changing where you call `next()` in our middleware, you can run code before and/or after the request is processed.
 For more details, see [this diagram](https://docs.strapi.io/img/assets/backend-customization/diagram-global-middlewares.png) from the Strapi docs (found on [this page](https://docs.strapi.io/dev-docs/backend-customization/middlewares)).
 
-For my use case, I am just setting a header
+For my use case, I am just setting a response header, so the location of the `next()` call doesn't make a difference.
 
 ```ts title="src/middlewares/login-page.ts"
 import { type Strapi } from "@strapi/strapi";
@@ -94,7 +94,7 @@ You could also register a route, like [this example](https://docs.strapi.io/dev-
 
 The redirect middleware works if you navigate directly to the login page in your browser; however, when you log out, the navigation is handled on the client side, so you see the default Strapi login page. The redirect only occurs if you reload the page.
 
-In hindsight, that problem was pretty obvious, but that's what it's like being a programmer.
+In hindsight, that problem was pretty obvious, but that's what it's like being a programmer :)
 
 This is where my "workaround" gets promoted to "hacky workaround." Strapi uses [React Router 5](https://v5.reactrouter.com/web/) for the admin panel, but it doesn't expose a way for me to add or modify client-side routes. I really should have patched the package, but instead, I had some more fun with middleware.
 
