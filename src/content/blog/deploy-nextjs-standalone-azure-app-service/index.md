@@ -386,6 +386,23 @@ When you push these changes to your repository, the workflow should build and de
 
 **🎉 You're Done!**
 
+**Note**: If your app relies on environment variables at build time, you will have to add them to the "npm install, build, and test" step.
+For example:
+
+```yml
+- name: npm install, build, and test
+  env:
+    CMS_BASE_URL: "https://..."
+    CMS_API_TOKEN: ${{ secrets.CMS_API_TOKEN }} # You can use GitHub repository secrets here
+  run: |
+    npm ci
+    npm run build --if-present
+    npm run test --if-present
+
+    mv .next/static .next/standalone/.next/static
+    mv public .next/standalone/public
+```
+
 ## Appendix: Setting Environment Variables
 
 If your app relies on [Dynamic Rendering](https://nextjs.org/docs/app/building-your-application/rendering/server-components#dynamic-rendering) (i.e. you use ISR, uncached route handlers, or dynamic route segments without `generateStaticParams`), you may need to add your environment variables to your Web App for it to work properly.
