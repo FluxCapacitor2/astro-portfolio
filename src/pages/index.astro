@@ -66,29 +66,25 @@ const featuredProject = (await getCollection("projects"))
       </a>
     </section>
 
-    {
-      featuredProject && (
-        <section class="my-16">
-          <h2 class="mb-4 text-2xl font-bold">Featured Project</h2>
-          <a href={`/projects/${featuredProject.slug}`}>
-            <Card class="flex flex-col gap-4 sm:flex-row">
-              <img
-                src={featuredProject.data.image.src}
-                class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
-              />
-              <div class="prose flex flex-col">
-                <h3 class="mb-0 text-xl">{featuredProject.data.name}</h3>
-                <p class="mb-4 mt-0">
-                  <FormattedDate date={featuredProject.data.date} />
-                  {featuredProject.data.ongoing && <>&mdash;Present</>}
-                </p>
-                <p class="my-0">{featuredProject.data.description}</p>
-              </div>
-            </Card>
-          </a>
-        </section>
-      )
-    }
+    <section class="my-16">
+      <h2 class="mb-4 text-2xl font-bold">Featured Project</h2>
+      <a href={`/projects/${featuredProject.slug}`}>
+        <Card class="flex flex-col gap-4 sm:flex-row">
+          <img
+            src={featuredProject.data.image.src}
+            class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
+          />
+          <div class="prose flex flex-col">
+            <h3 class="mb-0 text-xl">{featuredProject.data.name}</h3>
+            <p class="mb-4 mt-0">
+              <FormattedDate date={featuredProject.data.date} />
+              {featuredProject.data.ongoing && <>&mdash;Present</>}
+            </p>
+            <p class="my-0">{featuredProject.data.description}</p>
+          </div>
+        </Card>
+      </a>
+    </section>
 
     <section class="my-16">
       <h2 class="mb-4 text-2xl font-bold">Technologies</h2>
