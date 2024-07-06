@@ -36,6 +36,9 @@ export default {
       },
       colors: {
         primary: colors.blue,
+        surface: "var(--bg-surface)",
+        page: "var(--bg-page)",
+        border: "var(--border-color)",
       },
     },
   },

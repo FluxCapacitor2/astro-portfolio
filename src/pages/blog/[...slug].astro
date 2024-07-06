@@ -19,7 +19,7 @@ const { Content } = await post.render();
 
 <Layout {...post.data}>
   <main>
-    <article class="prose mx-auto dark:prose-invert">
+    <article class="prose mx-auto">
       <div class="hero-image">
         {
           image && (
@@ -33,7 +33,7 @@ const { Content } = await post.render();
           )
         }
       </div>
-      <div class="prose dark:prose-invert">
+      <div class="prose">
         <div class="title">
           <div class="date">
             <FormattedDate date={date} />

@@ -1,12 +1,33 @@
 ---
+import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
 import Layout from "../layouts/Layout.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Card from "../components/Card.astro";
+import TechStackItem from "../components/TechStackItem.astro";
+
+const latestPost = (await getCollection("blog")).reduce((prev, current) => {
+  if (current.data.date.getTime() > prev.data.date.getTime()) {
+    return current;
+  }
+  return prev;
+});
+
+// The most recent project that's marked as "featured"
+const featuredProject = (await getCollection("projects"))
+  .filter((project) => project.data.featured)
+  .reduce((prev, current) => {
+    if (current.data.date.getTime() > prev.data.date.getTime()) {
+      return current;
+    }
+    return prev;
+  });
 ---
 
 <!doctype html>
 <Layout>
   <main>
-    <section class="prose mt-36 text-center dark:prose-invert">
+    <section class="prose my-36 text-center">
       <h1 class="text-3xl font-bold text-black dark:text-white">
         👋 Hello! My name is Brendan.
       </h1>
@@ -24,6 +45,98 @@ import Layout from "../layouts/Layout.astro";
           <Button variant="secondary" size="sm">Read my blog</Button>
         </a>
       </div>
+    </section>
+
+    <section class="my-16">
+      <h2 class="mb-4 text-2xl font-bold">Latest Blog Post</h2>
+      <a href={`/blog/${latestPost.slug}`}>
+        <Card class="flex flex-col gap-4 sm:flex-row">
+          <img
+            src={latestPost.data.image.src}
+            class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
+          />
+          <div class="prose flex flex-col">
+            <h3 class="mb-0 text-xl">{latestPost.data.title}</h3>
+            <p class="mb-4 mt-0">
+              <FormattedDate date={latestPost.data.date} />
+            </p>
+            <p class="my-0">{latestPost.data.description}</p>
+          </div>
+        </Card>
+      </a>
+    </section>
+
+    {
+      featuredProject && (
+        <section class="my-16">
+          <h2 class="mb-4 text-2xl font-bold">Featured Project</h2>
+          <a href={`/projects/${featuredProject.slug}`}>
+            <Card class="flex flex-col gap-4 sm:flex-row">
+              <img
+                src={featuredProject.data.image.src}
+                class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
+              />
+              <div class="prose flex flex-col">
+                <h3 class="mb-0 text-xl">{featuredProject.data.name}</h3>
+                <p class="mb-4 mt-0">
+                  <FormattedDate date={featuredProject.data.date} />
+                  {featuredProject.data.ongoing && <>&mdash;Present</>}
+                </p>
+                <p class="my-0">{featuredProject.data.description}</p>
+              </div>
+            </Card>
+          </a>
+        </section>
+      )
+    }
+
+    <section class="my-16">
+      <h2 class="mb-4 text-2xl font-bold">Technologies</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td class="py-2 pr-8">Frontend Frameworks</td>
+            <td class="flex h-full flex-wrap items-center gap-2 py-2">
+              <TechStackItem class="size-12" name="react" />
+              <TechStackItem class="size-12" name="svelte" />
+              <TechStackItem class="size-12" name="vue" />
+              <TechStackItem class="size-12" name="solid" />
+            </td>
+          </tr>
+          <tr>
+            <td class="py-2 pr-8">Other Frontend Technologies</td>
+            <td class="flex h-full flex-wrap items-center gap-2 py-2">
+              <TechStackItem class="size-12" name="tailwind" />
+              <TechStackItem class="size-12" name="reactQuery" />
+              <TechStackItem class="size-12" name="swr" />
+            </td>
+          </tr>
+          <tr>
+            <td class="py-2 pr-8">Backend</td>
+            <td class="flex h-full flex-wrap items-center gap-2 py-2">
+              <TechStackItem class="size-12" name="next" />
+              <TechStackItem class="size-12" name="strapi" />
+              <TechStackItem class="size-12" name="firebase" />
+            </td>
+          </tr>
+          <tr>
+            <td class="py-2 pr-8">Build Tools</td>
+            <td class="flex h-full flex-wrap items-center gap-2 py-2">
+              <TechStackItem class="size-12" name="vite" />
+              <TechStackItem class="size-12" name="gradle" />
+            </td>
+          </tr>
+          <tr>
+            <td class="py-2 pr-8">Deployment</td>
+            <td class="flex h-full flex-wrap items-center gap-2 py-2">
+              <TechStackItem class="size-12" name="k8s" />
+              <TechStackItem class="size-12" name="vercel" />
+              <TechStackItem class="size-12" name="docker" />
+              <TechStackItem class="size-12" name="azure" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </main>
 </Layout>

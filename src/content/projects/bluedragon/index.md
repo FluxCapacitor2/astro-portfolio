@@ -3,7 +3,7 @@ kind: "media"
 featured: true
 name: BlueDragon
 image: ./bluedragon.png
-description: An original, custom Minecraft server with a diverse set of fun minigames.
+description: A custom Minecraft server with a diverse set of fun minigames. Built from scratch using Minestom and deployed locally with Kubernetes.
 link: https://bluedragonmc.com
 source: https://github.com/BlueDragonMC
 tags:
@@ -16,6 +16,7 @@ tags:
   - minestom
   - velocity
 date: 2022-06-27
+ongoing: true
 addedDate: 2023-05-27
 active: true
 ---

@@ -1,6 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Global styles */
+
+:root {
+  --bg-surface: theme(colors.white);
+  --bg-page: theme(colors.neutral.100);
+  --border-color: theme(colors.neutral.200);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-surface: theme(colors.black);
+    --bg-page: theme(colors.neutral.900);
+    --border-color: theme(colors.neutral.800);
+    color-scheme: dark;
+  }
+}
+
 html {
-  @apply bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:[color-scheme:dark] print:bg-inherit;
+  @apply bg-page dark:text-white print:bg-inherit;
+}
+
+/* Using :where to decrease specificity */
+:where(*) {
+  @apply border-border;
+}
+
+@layer components {
+  /* Always invert prose colors in dark mode */
+  .prose {
+    @apply dark:prose-invert;
+  }
 }
 
 /* Rehype Pretty Code styles */

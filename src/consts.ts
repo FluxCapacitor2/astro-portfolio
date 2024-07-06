@@ -6,6 +6,16 @@ export const technologies: Record<
   string,
   { name: string; link: string; icon: string }
 > = {
+  azure: {
+    name: "Azure",
+    link: "https://azure.microsoft.com",
+    icon: "devicon-plain:azure",
+  },
+  gradle: {
+    name: "Gradle",
+    link: "https://gradle.com",
+    icon: "simple-icons:gradle",
+  },
   vue: {
     name: "Vue.js",
     link: "https://vuejs.org",

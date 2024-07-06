@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon/components";
+import { technologies } from "../consts";
+
+interface Props {
+  name: keyof typeof technologies;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+---
+
+<a href={technologies[name]?.link} title={technologies[name]?.name}>
+  <Icon name={technologies[name]?.icon} class={className} />
+</a>

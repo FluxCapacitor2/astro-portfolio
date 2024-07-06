@@ -15,13 +15,13 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
-const { name, description, date, image, source, link } = project.data;
+const { name, description, date, ongoing, image, source, link } = project.data;
 const { Content } = await project.render();
 ---
 
 <Layout {...project.data} title={name}>
   <main>
-    <article class="prose mx-auto dark:prose-invert">
+    <article class="prose mx-auto">
       <div class="hero-image">
         {
           image && (
@@ -35,10 +35,10 @@ const { Content } = await project.render();
           )
         }
       </div>
-      <div class="prose dark:prose-invert">
+      <div class="prose">
         <div>
           <div>
-            <FormattedDate date={date} />
+            <FormattedDate date={date} />{ongoing && <>&mdash;Present</>}
           </div>
           <h1 class="mb-2">{name}</h1>
           <TechStack project={project} />
