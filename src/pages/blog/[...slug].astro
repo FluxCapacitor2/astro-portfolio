@@ -17,7 +17,7 @@ const { title, description, date, updatedDate, image } = post.data;
 const { Content } = await post.render();
 ---
 
-<Layout {...post.data}>
+<Layout {...post.data} ogType="article">
   <main>
     <article class="prose mx-auto">
       <div class="hero-image">

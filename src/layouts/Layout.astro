@@ -6,18 +6,30 @@ import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { ViewTransitions } from "astro:transitions";
 
-type Props = Partial<CollectionEntry<"blog">["data"]>;
+interface Props extends Partial<CollectionEntry<"blog">["data"]> {
+  ogType?: "article" | "website";
+}
 
 const {
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   image,
+  date,
+  updatedDate,
+  ogType,
 } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={image?.src} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image?.src}
+      publishedAt={date}
+      updatedAt={updatedDate}
+      ogType={ogType}
+    />
     <ViewTransitions />
   </head>
 
