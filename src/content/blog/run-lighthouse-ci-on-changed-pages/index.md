@@ -225,9 +225,9 @@ async function searchFor(file, keyword) {
       // and return the result.
       return (
         await Promise.all(
-          (
-            await readdir(file)
-          ).map((item) => searchFor(file + "/" + item, keyword))
+          (await readdir(file)).map((item) =>
+            searchFor(file + "/" + item, keyword)
+          )
         )
       ).flat(); // Flatten the result to keep the array 1-dimensional
     } else if (
@@ -455,9 +455,9 @@ async function searchFor(file, keyword) {
     if (stats.isDirectory()) {
       return (
         await Promise.all(
-          (
-            await readdir(file)
-          ).map((item) => searchFor(file + "/" + item, keyword))
+          (await readdir(file)).map((item) =>
+            searchFor(file + "/" + item, keyword)
+          )
         )
       ).flat();
     } else if (

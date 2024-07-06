@@ -21,7 +21,7 @@ const { Content } = await project.render();
 
 <Layout {...project.data} title={name}>
   <main>
-    <article class="mx-auto prose dark:prose-invert">
+    <article class="prose mx-auto dark:prose-invert">
       <div class="hero-image">
         {
           image && (
@@ -30,7 +30,7 @@ const { Content } = await project.render();
               height={510}
               src={image.src}
               alt=""
-              class="rounded-lg aspect-video object-cover"
+              class="aspect-video rounded-lg object-cover"
             />
           )
         }
@@ -43,7 +43,7 @@ const { Content } = await project.render();
           <h1 class="mb-2">{name}</h1>
           <TechStack project={project} />
           <p class="mt-0">{description}</p>
-          <div class="flex gap-2 flex-wrap">
+          <div class="flex flex-wrap gap-2">
             {
               link && (
                 <a href={link} class="no-underline" target="_blank">

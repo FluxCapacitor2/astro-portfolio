@@ -24,7 +24,7 @@ const projects = defineCollection({
         z.enum(
           Object.keys(technologies) as [
             (keyof typeof technologies)[0],
-            ...(keyof typeof technologies)[]
+            ...(keyof typeof technologies)[],
           ]
         )
       ),

@@ -11,12 +11,12 @@ const posts = (await getCollection("blog")).sort(
 
 <Layout>
   <main>
-    <h1 class="text-4xl text-center font-semibold my-12">Blog</h1>
+    <h1 class="my-12 text-center text-4xl font-semibold">Blog</h1>
     <section>
       <ul class="grid grid-cols-2 gap-8">
         {
           posts.map((post, index) => (
-            <li class="first:col-span-2 col-span-2 lg:col-span-1 lg:first:text-center">
+            <li class="col-span-2 first:col-span-2 lg:col-span-1 lg:first:text-center">
               <a href={`/blog/${post.slug}/`}>
                 <img
                   width={720}
@@ -24,13 +24,13 @@ const posts = (await getCollection("blog")).sort(
                   src={post.data.image.src}
                   alt=""
                   class={cn(
-                    "object-cover object-top rounded-lg",
+                    "rounded-lg object-cover object-top",
                     index === 0 ? "h-64 lg:h-96" : "h-64"
                   )}
                 />
                 <h4
                   class={cn(
-                    "font-bold mt-2",
+                    "mt-2 font-bold",
                     index === 0 ? "text-2xl" : "text-xl"
                   )}
                 >

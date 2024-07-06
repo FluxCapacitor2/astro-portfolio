@@ -13,9 +13,9 @@ const projects = (await getCollection("projects")).sort((a, b) => {
 
 <Layout>
   <main>
-    <h1 class="text-4xl text-center font-semibold my-12">Projects</h1>
+    <h1 class="my-12 text-center text-4xl font-semibold">Projects</h1>
     <section>
-      <ul class="grid lg:grid-cols-2 gap-8">
+      <ul class="grid gap-8 lg:grid-cols-2">
         {
           projects.map((project) => (
             <li
@@ -31,11 +31,11 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                   src={project.data.image.src}
                   alt=""
                   class={cn(
-                    "object-cover object-top rounded-lg",
+                    "rounded-lg object-cover object-top",
                     project.data.featured ? "h-80" : "h-64"
                   )}
                 />
-                <h4 class="font-bold mt-2 text-2xl">{project.data.name}</h4>
+                <h4 class="mt-2 text-2xl font-bold">{project.data.name}</h4>
                 <TechStack project={project} />
                 <p class="mt-2">{project.data.description}</p>
               </a>

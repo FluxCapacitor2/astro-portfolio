@@ -13,13 +13,13 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { title, date, updatedDate, image } = post.data;
+const { title, description, date, updatedDate, image } = post.data;
 const { Content } = await post.render();
 ---
 
 <Layout {...post.data}>
   <main>
-    <article class="mx-auto prose dark:prose-invert">
+    <article class="prose mx-auto dark:prose-invert">
       <div class="hero-image">
         {
           image && (
@@ -28,7 +28,7 @@ const { Content } = await post.render();
               height={510}
               src={image.src}
               alt=""
-              class="rounded-lg aspect-video object-cover"
+              class="aspect-video rounded-lg object-cover"
             />
           )
         }
@@ -45,7 +45,8 @@ const { Content } = await post.render();
               )
             }
           </div>
-          <h1>{title}</h1>
+          <h1 class="my-0">{title}</h1>
+          <p class="mb-4 mt-2">{description}</p>
           <hr />
         </div>
         <Content />
