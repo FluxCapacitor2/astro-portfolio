@@ -116,4 +116,14 @@ export const technologies: Record<
     link: "https://swr.vercel.app/",
     icon: "simple-icons:swr",
   },
+  go: {
+    name: "Go",
+    link: "https://go.dev/",
+    icon: "simple-icons:go",
+  },
+  sqlite: {
+    name: "Go",
+    link: "https://sqlite.org/",
+    icon: "simple-icons:sqlite",
+  },
 };

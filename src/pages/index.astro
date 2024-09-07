@@ -1,12 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
-import Layout from "../layouts/Layout.astro";
-import FormattedDate from "../components/FormattedDate.astro";
 import Card from "../components/Card.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 import TechStackItem from "../components/TechStackItem.astro";
+import Layout from "../layouts/Layout.astro";
 
-const latestPost = (await getCollection("blog")).reduce((prev, current) => {
+const posts = await getCollection("blog");
+
+const latestPost = posts.reduce((prev, current) => {
   if (current.data.date.getTime() > prev.data.date.getTime()) {
     return current;
   }
