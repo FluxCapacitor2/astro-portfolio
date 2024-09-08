@@ -24,20 +24,25 @@ const posts = (await getCollection("blog")).sort(
                   src={post.data.image.src}
                   alt=""
                   class={cn(
-                    "rounded-lg object-cover object-top",
+                    "rounded-lg object-cover",
                     index === 0 ? "h-64 lg:h-96" : "h-64"
                   )}
+                  transition:name={`post ${post.slug} image`}
                 />
                 <h4
                   class={cn(
                     "mt-2 font-bold",
                     index === 0 ? "text-2xl" : "text-xl"
                   )}
+                  transition:name={`post ${post.slug} title`}
                 >
                   {post.data.title}
                 </h4>
                 <p class="text-gray-500 dark:text-gray-400">
-                  <FormattedDate date={post.data.date} />
+                  <FormattedDate
+                    date={post.data.date}
+                    transition:name={`post ${post.slug} date`}
+                  />
                 </p>
               </a>
             </li>

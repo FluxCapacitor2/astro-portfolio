@@ -34,10 +34,24 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                     "rounded-lg object-cover object-top",
                     project.data.featured ? "h-80" : "h-64"
                   )}
+                  transition:name={`project ${project.slug} image`}
                 />
-                <h4 class="mt-2 text-2xl font-bold">{project.data.name}</h4>
-                <TechStack project={project} />
-                <p class="mt-2">{project.data.description}</p>
+                <h4
+                  class="mt-2 text-2xl font-bold"
+                  transition:name={`project ${project.slug} name`}
+                >
+                  {project.data.name}
+                </h4>
+                <TechStack
+                  project={project}
+                  transition:name={`project ${project.slug} tech-stack`}
+                />
+                <p
+                  class="mt-2"
+                  transition:name={`project ${project.slug} description`}
+                >
+                  {project.data.description}
+                </p>
               </a>
             </li>
           ))

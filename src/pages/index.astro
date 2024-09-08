@@ -56,13 +56,27 @@ const featuredProject = (await getCollection("projects"))
           <img
             src={latestPost.data.image.src}
             class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
+            transition:name={`post ${latestPost.slug} image`}
           />
           <div class="prose flex flex-col">
-            <h3 class="mb-0 text-xl">{latestPost.data.title}</h3>
+            <h3
+              class="mb-0 text-xl"
+              transition:name={`post ${latestPost.slug} title`}
+            >
+              {latestPost.data.title}
+            </h3>
             <p class="mb-4 mt-0">
-              <FormattedDate date={latestPost.data.date} />
+              <FormattedDate
+                date={latestPost.data.date}
+                transition:name={`post ${latestPost.slug} date`}
+              />
             </p>
-            <p class="my-0">{latestPost.data.description}</p>
+            <p
+              class="my-0"
+              transition:name={`post ${latestPost.slug} description`}
+            >
+              {latestPost.data.description}
+            </p>
           </div>
         </Card>
       </a>
@@ -75,14 +89,28 @@ const featuredProject = (await getCollection("projects"))
           <img
             src={featuredProject.data.image.src}
             class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
+            transition:name={`project ${featuredProject.slug} image`}
           />
           <div class="prose flex flex-col">
-            <h3 class="mb-0 text-xl">{featuredProject.data.name}</h3>
-            <p class="mb-4 mt-0">
+            <h3
+              class="mb-0 text-xl"
+              transition:name={`project ${featuredProject.slug} name`}
+            >
+              {featuredProject.data.name}
+            </h3>
+            <p
+              class="mb-4 mt-0"
+              transition:name={`project ${featuredProject.slug} date`}
+            >
               <FormattedDate date={featuredProject.data.date} />
               {featuredProject.data.ongoing && <>&mdash;Present</>}
             </p>
-            <p class="my-0">{featuredProject.data.description}</p>
+            <p
+              class="my-0"
+              transition:name={`project ${featuredProject.slug} description`}
+            >
+              {featuredProject.data.description}
+            </p>
           </div>
         </Card>
       </a>

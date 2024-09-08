@@ -29,6 +29,7 @@ const { Content } = await post.render();
               src={image.src}
               alt=""
               class="aspect-video rounded-lg object-cover"
+              transition:name={`post ${post.slug} image`}
             />
           )
         }
@@ -36,7 +37,10 @@ const { Content } = await post.render();
       <div class="prose">
         <div class="title">
           <div class="date">
-            <FormattedDate date={date} />
+            <FormattedDate
+              date={date}
+              transition:name={`post ${post.slug} date`}
+            />
             {
               updatedDate && (
                 <div class="last-updated-on">
@@ -45,7 +49,9 @@ const { Content } = await post.render();
               )
             }
           </div>
-          <h1 class="my-0">{title}</h1>
+          <h1 class="my-0" transition:name={`post ${post.slug} title`}>
+            {title}
+          </h1>
           <p class="mb-4 mt-2">{description}</p>
           <hr />
         </div>

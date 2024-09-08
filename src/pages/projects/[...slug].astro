@@ -31,18 +31,29 @@ const { Content } = await project.render();
               src={image.src}
               alt=""
               class="aspect-video rounded-lg object-cover"
+              transition:name={`project ${project.slug} image`}
             />
           )
         }
       </div>
       <div class="prose">
         <div>
-          <div>
+          <div transition:name={`project ${project.slug} date`}>
             <FormattedDate date={date} />{ongoing && <>&mdash;Present</>}
           </div>
-          <h1 class="mb-2">{name}</h1>
-          <TechStack project={project} />
-          <p class="mt-0">{description}</p>
+          <h1 class="mb-2" transition:name={`project ${project.slug} name`}>
+            {name}
+          </h1>
+          <TechStack
+            project={project}
+            transition:name={`project ${project.slug} tech-stack`}
+          />
+          <p
+            class="mt-0"
+            transition:name={`project ${project.slug} description`}
+          >
+            {description}
+          </p>
           <div class="flex flex-wrap gap-2">
             {
               link && (
