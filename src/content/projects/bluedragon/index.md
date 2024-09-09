@@ -1,4 +1,5 @@
 ---
+sortOrder: 1
 kind: "media"
 featured: true
 name: BlueDragon

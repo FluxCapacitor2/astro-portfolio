@@ -1,4 +1,5 @@
 ---
+sortOrder: 9
 kind: "website"
 name: "Favicon Generator"
 image: ./favicon-generator.png

@@ -1,4 +1,5 @@
 ---
+sortOrder: 3
 kind: website
 name: Capture The Flag
 image: ./ctf.png

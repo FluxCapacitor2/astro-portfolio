@@ -1,4 +1,5 @@
 ---
+sortOrder: 7
 name: SkyBlock Loot Calculator
 description: A website that gathers drop chances from the Hypixel SkyBlock Wiki and uses them to calculate an expected value for each dungeon floor and loot chest.
 link: https://dungeon-loot-calculator.vercel.app/

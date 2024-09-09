@@ -7,6 +7,10 @@ import { cn } from "../../utils/cn";
 const projects = (await getCollection("projects")).sort((a, b) => {
   const featuredDifference = Number(b.data.featured) - Number(a.data.featured);
   if (featuredDifference !== 0) return featuredDifference;
+  const orderDiff = a.data.sortOrder - b.data.sortOrder;
+  if (orderDiff != 0) {
+    return orderDiff;
+  }
   return b.data.date.valueOf() - a.data.date.valueOf();
 });
 ---

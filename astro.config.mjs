@@ -36,5 +36,6 @@ export default defineConfig({
       "/blog/2023-cyberdiscord-open",
     "/portfolio": "/projects",
     "/portfolio/media/bluedragon": "/projects/bluedragon",
+    "/favicon.svg": "/icon.svg",
   },
 });

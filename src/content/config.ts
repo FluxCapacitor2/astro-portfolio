@@ -17,6 +17,7 @@ const projects = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
+      sortOrder: z.number(),
       name: z.string(),
       image: image(),
       description: z.string(),

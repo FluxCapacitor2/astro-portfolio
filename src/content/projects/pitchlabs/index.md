@@ -1,4 +1,5 @@
 ---
+sortOrder: 4
 kind: "website"
 name: "Pitch Labs"
 image: ./pitchlabs.png

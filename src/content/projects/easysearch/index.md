@@ -1,4 +1,5 @@
 ---
+sortOrder: 2
 kind: "website"
 name: "Easysearch"
 image: ./easysearch-zoomed.png
