@@ -50,6 +50,39 @@ const featuredProject = (await getCollection("projects"))
     </section>
 
     <section class="my-16">
+      <h2 class="mb-4 text-2xl font-bold">More About Me</h2>
+      <div class="prose">
+        <p>
+          I am a Computer Science student at North Carolina State University,
+          and I have been doing computer programming as a hobby for over 6 years
+          because I love solving complex problems.
+        </p>
+        <p>
+          I've built projects like <a href="https://github.com/BlueDragonMC/"
+            >BlueDragon</a
+          > (Kubernetes, gRPC, Kotlin, Next.js, MongoDB), <a
+            href="https://github.com/FluxCapacitor2/easysearch/">Easysearch</a
+          > (Go, SQLite), and a <a href="https://www.bswanson.dev/projects/ctf/"
+            >capture-the-flag recruitment challenge</a
+          > (Next.js, Docker, SQLite) for my high school&#39;s cybersecurity team.
+        </p>
+        <p>
+          I&#39;m also a volunteer full-stack web developer at <a
+            href="https://www.pitchlabs.org/">Pitch Labs</a
+          >, a small business education nonprofit. I manage their cloud
+          infrastructure and maintain their website and internal dashboard, both
+          of which are built with Next.js 14, TailwindCSS, and Strapi.
+        </p>
+        <p>
+          I am currently looking for software engineering internship roles for
+          Summer 2025. <a href="https://www.linkedin.com/in/bdswanson/"
+            >Connect with me</a
+          > on LinkedIn!
+        </p>
+      </div>
+    </section>
+
+    <section class="my-16">
       <h2 class="mb-4 text-2xl font-bold">Latest Blog Post</h2>
       <a href={`/blog/${latestPost.slug}`}>
         <Card class="flex flex-col gap-4 sm:flex-row">
