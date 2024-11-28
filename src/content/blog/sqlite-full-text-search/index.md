@@ -152,7 +152,7 @@ For example (using the same table names from the previous example):
 INSERT INTO tbl(a, b, c) VALUES (1, 'searchable text', 'some more searchable text');
 
 -- At this point, the index is out of sync. Make sure to update it with the same content!
--- (the trigger automates this next line)
+-- (using a trigger would automate this next line)
 INSERT INTO tbl_idx(rowid, b, c) VALUES (1, 'searchable text', 'some more searchable text');
 
 -- The index is now in sync with the content table again. 🎉
@@ -162,7 +162,7 @@ INSERT INTO tbl_idx(rowid, b, c) VALUES (1, 'searchable text', 'some more search
 
 Now that you've added your content, it's time to run some search queries! You can search for content in your FTS5 virtual table using `MATCH` expressions:
 
-```sql caption="This is a prepared statement where the first and only placeholder is the search query."
+```sql caption="This is a parameterized statement where the first and only placeholder is the search query."
 SELECT * FROM pages_fts WHERE pages_fts MATCH ?
 ```
 
@@ -268,7 +268,6 @@ Splitting words by word boundaries will also remove quotes from each word, so yo
 As an example, here is what I do for [Easysearch](https://github.com/FluxCapacitor2/easysearch/):
 
 ```go
-
 var re = regexp.MustCompile(`\W`)
 
 func escape(searchTerm string) string {
