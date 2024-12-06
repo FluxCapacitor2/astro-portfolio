@@ -2,6 +2,7 @@
 title: How I Sped Up Azure App Service Builds by 10x
 description: "How one command shaved 25 minutes off my deployment times."
 date: 2024-02-04
+modifiedDate: 2024-12-06
 image: ./gradient.jpg
 ---
 
@@ -174,6 +175,10 @@ Finished successfully.
 ```
 
 ## Learning about App Service's deployment process
+
+> **Update**: This issue may finally be resolved!
+> A Microsoft developer has responded to a two-and-a-half-year-old(!) issue indicating that they're working on replacing [KuduSync](https://github.com/projectkudu/KuduSync), which hasn't received any public updates in over two years, with `rsync`.
+> This [issue comment](https://github.com/Azure/webapps-deploy/issues/229#issuecomment-2519786885) has more details.
 
 At the end of the GitHub Actions workflow, a ZIP file containing the app is uploaded to App Service.
 On my App Service instance, a tool called [Kudu](https://github.com/projectkudu/kudu) extracts the ZIP file,
