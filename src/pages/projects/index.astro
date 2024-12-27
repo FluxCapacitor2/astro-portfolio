@@ -44,7 +44,7 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                 project.data.featured && "lg:col-span-2"
               )}
             >
-              <a href={`/projects/${project.slug}/`}>
+              <a href={`/projects/${project.id}/`}>
                 <img
                   width={720}
                   height={360}
@@ -54,21 +54,21 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                     "rounded-lg object-cover object-top",
                     project.data.featured ? "h-80" : "h-64"
                   )}
-                  transition:name={`project ${project.slug} image`}
+                  transition:name={`project ${project.id} image`}
                 />
                 <h4
                   class="mt-2 text-2xl font-bold"
-                  transition:name={`project ${project.slug} name`}
+                  transition:name={`project ${project.id} name`}
                 >
                   {project.data.name}
                 </h4>
                 <TechStack
                   project={project}
-                  transition:name={`project ${project.slug} tech-stack`}
+                  transition:name={`project ${project.id} tech-stack`}
                 />
                 <p
                   class="mt-2"
-                  transition:name={`project ${project.slug} description`}
+                  transition:name={`project ${project.id} description`}
                 >
                   {project.data.description}
                 </p>

@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import Button from "../../components/Button.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import TechStack from "../../components/TechStack.astro";
@@ -8,7 +8,7 @@ import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
   const posts = await getCollection("projects");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { id: post.id },
     props: post,
   }));
 }
@@ -16,7 +16,7 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 const { name, description, date, ongoing, image, source, link } = project.data;
-const { Content } = await project.render();
+const { Content } = await render(project);
 ---
 
 <Layout {...project.data} title={name}>
@@ -31,27 +31,24 @@ const { Content } = await project.render();
               src={image.src}
               alt=""
               class="aspect-video rounded-lg object-cover"
-              transition:name={`project ${project.slug} image`}
+              transition:name={`project ${project.id} image`}
             />
           )
         }
       </div>
       <div class="prose">
         <div>
-          <div transition:name={`project ${project.slug} date`}>
+          <div transition:name={`project ${project.id} date`}>
             <FormattedDate date={date} />{ongoing && <>&mdash;Present</>}
           </div>
-          <h1 class="mb-2" transition:name={`project ${project.slug} name`}>
+          <h1 class="mb-2" transition:name={`project ${project.id} name`}>
             {name}
           </h1>
           <TechStack
             project={project}
-            transition:name={`project ${project.slug} tech-stack`}
+            transition:name={`project ${project.id} tech-stack`}
           />
-          <p
-            class="mt-0"
-            transition:name={`project ${project.slug} description`}
-          >
+          <p class="mt-0" transition:name={`project ${project.id} description`}>
             {description}
           </p>
           <div class="flex flex-wrap gap-2">

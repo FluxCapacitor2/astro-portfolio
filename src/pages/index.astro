@@ -84,29 +84,29 @@ const featuredProject = (await getCollection("projects"))
 
     <section class="my-16">
       <h2 class="mb-4 text-2xl font-bold">Latest Blog Post</h2>
-      <a href={`/blog/${latestPost.slug}`}>
+      <a href={`/blog/${latestPost.id}`}>
         <Card class="flex flex-col gap-4 sm:flex-row">
           <img
             src={latestPost.data.image.src}
             class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
-            transition:name={`post ${latestPost.slug} image`}
+            transition:name={`post ${latestPost.id} image`}
           />
           <div class="prose flex flex-col">
             <h3
               class="mb-0 text-xl"
-              transition:name={`post ${latestPost.slug} title`}
+              transition:name={`post ${latestPost.id} title`}
             >
               {latestPost.data.title}
             </h3>
             <p class="mb-4 mt-0">
               <FormattedDate
                 date={latestPost.data.date}
-                transition:name={`post ${latestPost.slug} date`}
+                transition:name={`post ${latestPost.id} date`}
               />
             </p>
             <p
               class="my-0"
-              transition:name={`post ${latestPost.slug} description`}
+              transition:name={`post ${latestPost.id} description`}
             >
               {latestPost.data.description}
             </p>
@@ -117,30 +117,30 @@ const featuredProject = (await getCollection("projects"))
 
     <section class="my-16">
       <h2 class="mb-4 text-2xl font-bold">Featured Project</h2>
-      <a href={`/projects/${featuredProject.slug}`}>
+      <a href={`/projects/${featuredProject.id}`}>
         <Card class="flex flex-col gap-4 sm:flex-row">
           <img
             src={featuredProject.data.image.src}
             class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
-            transition:name={`project ${featuredProject.slug} image`}
+            transition:name={`project ${featuredProject.id} image`}
           />
           <div class="prose flex flex-col">
             <h3
               class="mb-0 text-xl"
-              transition:name={`project ${featuredProject.slug} name`}
+              transition:name={`project ${featuredProject.id} name`}
             >
               {featuredProject.data.name}
             </h3>
             <p
               class="mb-4 mt-0"
-              transition:name={`project ${featuredProject.slug} date`}
+              transition:name={`project ${featuredProject.id} date`}
             >
               <FormattedDate date={featuredProject.data.date} />
               {featuredProject.data.ongoing && <>&mdash;Present</>}
             </p>
             <p
               class="my-0"
-              transition:name={`project ${featuredProject.slug} description`}
+              transition:name={`project ${featuredProject.id} description`}
             >
               {featuredProject.data.description}
             </p>

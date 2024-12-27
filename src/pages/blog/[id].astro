@@ -1,12 +1,12 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { id: post.id },
     props: post,
   }));
 }
@@ -14,7 +14,7 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { title, description, date, updatedDate, image } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Layout {...post.data} ogType="article">
@@ -29,7 +29,7 @@ const { Content } = await post.render();
               src={image.src}
               alt=""
               class="aspect-video rounded-lg object-cover"
-              transition:name={`post ${post.slug} image`}
+              transition:name={`post ${post.id} image`}
             />
           )
         }
@@ -39,7 +39,7 @@ const { Content } = await post.render();
           <div class="date">
             <FormattedDate
               date={date}
-              transition:name={`post ${post.slug} date`}
+              transition:name={`post ${post.id} date`}
             />
             {
               updatedDate && (
@@ -49,7 +49,7 @@ const { Content } = await post.render();
               )
             }
           </div>
-          <h1 class="my-0" transition:name={`post ${post.slug} title`}>
+          <h1 class="my-0" transition:name={`post ${post.id} title`}>
             {title}
           </h1>
           <p class="mb-4 mt-2">{description}</p>
