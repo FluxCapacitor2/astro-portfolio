@@ -1,7 +1,7 @@
 ---
 title: Exploring SQLite's Internals
 description: Here's what I learned about how SQLite works under the hood from a recent lecture by its creator, Dr. Richard Hipp, a few other talks, and the official documentation.
-date: 2024-12-31T20:00:00-04:00
+date: 2024-12-31T00:00:00-04:00
 # Background made with https://www.fffuel.co/aaabstract/
 image: ./image.png
 ---
