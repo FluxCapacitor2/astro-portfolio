@@ -1,11 +1,10 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel";
+import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 import rehypePrettyCode from "rehype-pretty-code";
-
-import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
