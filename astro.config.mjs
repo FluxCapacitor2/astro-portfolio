@@ -63,4 +63,10 @@ export default defineConfig({
     "/portfolio/media/bluedragon": "/projects/bluedragon",
     "/favicon.svg": "/icon.svg",
   },
+  experimental: {
+    responsiveImages: true,
+  },
+  image: {
+    experimentalLayout: "none",
+  },
 });
