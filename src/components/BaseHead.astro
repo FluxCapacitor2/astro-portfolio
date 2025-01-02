@@ -1,6 +1,6 @@
 ---
-import "@fontsource-variable/outfit";
-import "../styles/global.css";
+import fontUrl from "@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url";
+import styleUrl from "../styles/global.css?url";
 
 interface Props {
   title: string;
@@ -28,6 +28,8 @@ const {
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preload" as="style" href={styleUrl} />
+<link rel="preload" as="font" href={fontUrl} type="font/woff2" crossorigin />
 
 <title>{title}</title>
 
@@ -74,3 +76,5 @@ const {
   href={new URL("/rss.xml", Astro.url)}
   title="Brendan's Dev Blog"
 />
+
+<link rel="stylesheet" href={styleUrl} />

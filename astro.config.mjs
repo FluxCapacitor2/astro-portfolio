@@ -15,7 +15,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap(),
-    tailwind(),
+    tailwind({ applyBaseStyles: false }),
     icon(),
     process.env.VERCEL
       ? {
