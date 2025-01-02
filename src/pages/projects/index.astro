@@ -45,7 +45,10 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                 project.data.featured && "lg:col-span-2"
               )}
             >
-              <a href={`/projects/${project.id}/`}>
+              <a
+                href={`/projects/${project.id}/`}
+                aria-label={project.data.name}
+              >
                 <Image
                   height={project.data.featured ? 384 : 256}
                   src={project.data.image}
@@ -57,12 +60,12 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                   priority={project.data.featured}
                   transition:name={`project ${project.id} image`}
                 />
-                <h4
+                <h2
                   class="mt-2 text-2xl font-bold"
                   transition:name={`project ${project.id} name`}
                 >
                   {project.data.name}
-                </h4>
+                </h2>
                 <TechStack
                   project={project}
                   transition:name={`project ${project.id} tech-stack`}

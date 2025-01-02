@@ -30,7 +30,7 @@ const posts = (await getCollection("blog")).sort(
                   )}
                   transition:name={`post ${post.id} image`}
                 />
-                <h4
+                <h2
                   class={cn(
                     "mt-2 font-bold",
                     index === 0 ? "text-2xl" : "text-xl"
@@ -38,7 +38,7 @@ const posts = (await getCollection("blog")).sort(
                   transition:name={`post ${post.id} title`}
                 >
                   {post.data.title}
-                </h4>
+                </h2>
                 <p class="text-gray-500 dark:text-gray-400">
                   <FormattedDate
                     date={post.data.date}
