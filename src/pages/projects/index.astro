@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import TechStack from "../../components/TechStack.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -45,15 +46,15 @@ const projects = (await getCollection("projects")).sort((a, b) => {
               )}
             >
               <a href={`/projects/${project.id}/`}>
-                <img
-                  width={720}
-                  height={360}
-                  src={project.data.image.src}
+                <Image
+                  height={project.data.featured ? 384 : 256}
+                  src={project.data.image}
                   alt=""
                   class={cn(
-                    "rounded-lg object-cover object-top",
+                    "w-full rounded-lg object-cover object-top",
                     project.data.featured ? "h-80" : "h-64"
                   )}
+                  priority={project.data.featured}
                   transition:name={`project ${project.id} image`}
                 />
                 <h4

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
@@ -86,8 +87,10 @@ const featuredProject = (await getCollection("projects"))
       <h2 class="mb-4 text-2xl font-bold">Latest Blog Post</h2>
       <a href={`/blog/${latestPost.id}`}>
         <Card class="flex flex-col gap-4 sm:flex-row">
-          <img
-            src={latestPost.data.image.src}
+          <Image
+            alt={latestPost.data.title}
+            src={latestPost.data.image}
+            height={192}
             class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
             transition:name={`post ${latestPost.id} image`}
           />
@@ -119,8 +122,10 @@ const featuredProject = (await getCollection("projects"))
       <h2 class="mb-4 text-2xl font-bold">Featured Project</h2>
       <a href={`/projects/${featuredProject.id}`}>
         <Card class="flex flex-col gap-4 sm:flex-row">
-          <img
-            src={featuredProject.data.image.src}
+          <Image
+            alt={featuredProject.data.name}
+            src={featuredProject.data.image}
+            height={192}
             class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
             transition:name={`project ${featuredProject.id} image`}
           />

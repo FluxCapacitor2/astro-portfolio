@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -18,13 +19,13 @@ const posts = (await getCollection("blog")).sort(
           posts.map((post, index) => (
             <li class="col-span-2 first:col-span-2 lg:col-span-1 lg:first:text-center">
               <a href={`/blog/${post.id}/`}>
-                <img
-                  width={720}
-                  height={360}
-                  src={post.data.image.src}
+                <Image
+                  height={index === 0 ? 384 : 256}
+                  src={post.data.image}
                   alt=""
+                  priority={index === 0}
                   class={cn(
-                    "rounded-lg object-cover",
+                    "w-full rounded-lg object-cover",
                     index === 0 ? "h-64 lg:h-96" : "h-64"
                   )}
                   transition:name={`post ${post.id} image`}

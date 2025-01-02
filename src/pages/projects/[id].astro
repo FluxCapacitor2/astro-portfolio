@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import Button from "../../components/Button.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
@@ -22,20 +23,18 @@ const { Content } = await render(project);
 <Layout {...project.data} title={name}>
   <main>
     <article class="prose mx-auto">
-      <div class="hero-image">
-        {
-          image && (
-            <img
-              width={1020}
-              height={510}
-              src={image.src}
-              alt=""
-              class="aspect-video rounded-lg object-cover"
-              transition:name={`project ${project.id} image`}
-            />
-          )
-        }
-      </div>
+      {
+        image && (
+          <Image
+            height={384}
+            src={image}
+            alt=""
+            priority
+            class="aspect-video h-96 w-full rounded-lg object-cover"
+            transition:name={`project ${project.id} image`}
+          />
+        )
+      }
       <div class="prose">
         <div>
           <div transition:name={`project ${project.id} date`}>
