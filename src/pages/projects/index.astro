@@ -54,7 +54,7 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                   src={project.data.image}
                   alt=""
                   class={cn(
-                    "w-full rounded-lg object-cover object-top",
+                    "w-full rounded-lg object-cover",
                     project.data.featured ? "h-80" : "h-64"
                   )}
                   priority={project.data.featured}

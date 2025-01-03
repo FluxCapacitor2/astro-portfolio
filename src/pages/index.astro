@@ -1,10 +1,10 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import TechStackItem from "../components/TechStackItem.astro";
 import Layout from "../layouts/Layout.astro";
 
 const posts = await getCollection("blog");
@@ -16,15 +16,9 @@ const latestPost = posts.reduce((prev, current) => {
   return prev;
 });
 
-// The most recent project that's marked as "featured"
-const featuredProject = (await getCollection("projects"))
-  .filter((project) => project.data.featured)
-  .reduce((prev, current) => {
-    if (current.data.date.getTime() > prev.data.date.getTime()) {
-      return current;
-    }
-    return prev;
-  });
+const featuredProjects = (await getCollection("projects")).filter(
+  (project) => project.data.featured
+);
 ---
 
 <!doctype html>
@@ -74,12 +68,6 @@ const featuredProject = (await getCollection("projects"))
           infrastructure and maintain their website and internal dashboard, both
           of which are built with Next.js 14, TailwindCSS, and Strapi.
         </p>
-        <p>
-          I am currently looking for software engineering internship roles for
-          Summer 2025. <a href="https://www.linkedin.com/in/bdswanson/"
-            >Connect with me</a
-          > on LinkedIn!
-        </p>
       </div>
     </section>
 
@@ -116,91 +104,62 @@ const featuredProject = (await getCollection("projects"))
           </div>
         </Card>
       </a>
+      <div class="mt-4 flex justify-end">
+        <a href="/blog">
+          <Button variant="secondary" size="sm">
+            More blog posts <Icon name="mdi:arrow-forward" />
+          </Button>
+        </a>
+      </div>
     </section>
 
     <section class="my-16">
-      <h2 class="mb-4 text-2xl font-bold">Featured Project</h2>
-      <a href={`/projects/${featuredProject.id}`}>
-        <Card class="flex flex-col gap-4 sm:flex-row">
-          <Image
-            alt={featuredProject.data.name}
-            src={featuredProject.data.image}
-            height={192}
-            class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
-            transition:name={`project ${featuredProject.id} image`}
-          />
-          <div class="prose flex flex-col">
-            <h3
-              class="mb-0 text-xl"
-              transition:name={`project ${featuredProject.id} name`}
-            >
-              {featuredProject.data.name}
-            </h3>
-            <p
-              class="mb-4 mt-0"
-              transition:name={`project ${featuredProject.id} date`}
-            >
-              <FormattedDate date={featuredProject.data.date} />
-              {featuredProject.data.ongoing && <>&mdash;Present</>}
-            </p>
-            <p
-              class="my-0"
-              transition:name={`project ${featuredProject.id} description`}
-            >
-              {featuredProject.data.description}
-            </p>
-          </div>
-        </Card>
-      </a>
-    </section>
-
-    <section class="my-16">
-      <h2 class="mb-4 text-2xl font-bold">Technologies</h2>
-      <table>
-        <tbody>
-          <tr>
-            <td class="py-2 pr-8">Frontend Frameworks</td>
-            <td class="flex h-full flex-wrap items-center gap-2 py-2">
-              <TechStackItem class="size-12" name="react" />
-              <TechStackItem class="size-12" name="svelte" />
-              <TechStackItem class="size-12" name="vue" />
-              <TechStackItem class="size-12" name="solid" />
-            </td>
-          </tr>
-          <tr>
-            <td class="py-2 pr-8">Other Frontend Technologies</td>
-            <td class="flex h-full flex-wrap items-center gap-2 py-2">
-              <TechStackItem class="size-12" name="tailwind" />
-              <TechStackItem class="size-12" name="reactQuery" />
-              <TechStackItem class="size-12" name="swr" />
-            </td>
-          </tr>
-          <tr>
-            <td class="py-2 pr-8">Backend</td>
-            <td class="flex h-full flex-wrap items-center gap-2 py-2">
-              <TechStackItem class="size-12" name="next" />
-              <TechStackItem class="size-12" name="strapi" />
-              <TechStackItem class="size-12" name="firebase" />
-            </td>
-          </tr>
-          <tr>
-            <td class="py-2 pr-8">Build Tools</td>
-            <td class="flex h-full flex-wrap items-center gap-2 py-2">
-              <TechStackItem class="size-12" name="vite" />
-              <TechStackItem class="size-12" name="gradle" />
-            </td>
-          </tr>
-          <tr>
-            <td class="py-2 pr-8">Deployment</td>
-            <td class="flex h-full flex-wrap items-center gap-2 py-2">
-              <TechStackItem class="size-12" name="k8s" />
-              <TechStackItem class="size-12" name="vercel" />
-              <TechStackItem class="size-12" name="docker" />
-              <TechStackItem class="size-12" name="azure" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h2 class="mb-4 text-2xl font-bold">
+        Featured Project{featuredProjects.length === 1 ? "" : "s"}
+      </h2>
+      {
+        featuredProjects.map((featuredProject) => (
+          <a href={`/projects/${featuredProject.id}`} class="mb-4 block">
+            <Card class="flex flex-col gap-4 sm:flex-row">
+              <Image
+                alt={featuredProject.data.name}
+                src={featuredProject.data.image}
+                height={192}
+                class="h-48 w-full min-w-48 overflow-hidden rounded-md object-cover sm:max-w-48"
+                transition:name={`project ${featuredProject.id} image`}
+              />
+              <div class="prose flex flex-col">
+                <h3
+                  class="mb-0 text-xl"
+                  transition:name={`project ${featuredProject.id} name`}
+                >
+                  {featuredProject.data.name}
+                </h3>
+                <p
+                  class="mb-4 mt-0"
+                  transition:name={`project ${featuredProject.id} date`}
+                >
+                  <FormattedDate date={featuredProject.data.date} />
+                  {featuredProject.data.ongoing && <>&mdash;Present</>}
+                </p>
+                <p
+                  class="my-0"
+                  transition:name={`project ${featuredProject.id} description`}
+                >
+                  {featuredProject.data.description}
+                </p>
+              </div>
+            </Card>
+          </a>
+        ))
+      }
+      <div class="flex justify-end">
+        <a href="/projects">
+          <Button variant="secondary" size="sm">
+            More projects <Icon name="mdi:arrow-forward" />
+          </Button>
+        </a>
+      </div>
     </section>
   </main>
 </Layout>

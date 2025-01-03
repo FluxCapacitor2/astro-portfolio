@@ -73,3 +73,30 @@ const { Content } = await render(project);
     </article>
   </main>
 </Layout>
+
+<script>
+  // Lazily load videos with the `data-src` attribute (wait until they enter the viewport to load them)
+  const videos = document.querySelectorAll("video[data-src]");
+
+  for (const video of videos) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const v = video as HTMLVideoElement;
+            v.src = v.dataset.src!;
+            v.load();
+            observer.unobserve(video);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+      }
+    );
+
+    observer.observe(video);
+  }
+</script>

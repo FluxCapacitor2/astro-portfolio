@@ -66,11 +66,6 @@ export const technologies: Record<
     link: "https://vercel.com",
     icon: "simple-icons:vercel",
   },
-  planetscale: {
-    name: "Planetscale",
-    link: "https://planetscale.com",
-    icon: "simple-icons:planetscale",
-  },
   docker: {
     name: "Docker",
     link: "https://docker.com",
@@ -125,5 +120,15 @@ export const technologies: Record<
     name: "Go",
     link: "https://sqlite.org/",
     icon: "simple-icons:sqlite",
+  },
+  remix: {
+    name: "Remix",
+    link: "https://remix.run/",
+    icon: "simple-icons:remix",
+  },
+  astro: {
+    name: "Astro",
+    link: "https://astro.build/",
+    icon: "simple-icons:astro",
   },
 };
