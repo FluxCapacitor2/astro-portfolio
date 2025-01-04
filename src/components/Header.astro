@@ -1,15 +1,45 @@
 ---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import icon from "../../public/icon.svg";
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header>
   <nav class="container mx-auto flex justify-between px-4 py-2 text-lg">
-    <h2 class="font-medium"><a href="/">{SITE_TITLE}</a></h2>
+    <h2 class="font-medium">
+      <a href="/" class="flex h-full items-center">
+        <span class="max-sm:hidden">
+          {SITE_TITLE}
+        </span>
+        <Image
+          class="sm:hidden"
+          src={icon}
+          alt="Brendan Swanson"
+          width={24}
+          height={24}
+        />
+      </a>
+    </h2>
     <div class="flex gap-4 lg:gap-6">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/projects">Projects</HeaderLink>
+      <HeaderLink
+        href="https://github.com/FluxCapacitor2/"
+        target="_blank"
+        class="flex items-center text-gray-800"
+      >
+        <Icon name="simple-icons:github" size={24} aria-label="GitHub" />
+      </HeaderLink>
+      <HeaderLink
+        href="https://linkedin.com/in/bdswanson/"
+        target="_blank"
+        class="flex items-center text-gray-800"
+      >
+        <Icon name="simple-icons:linkedin" size={24} aria-label="LinkedIn" />
+      </HeaderLink>
     </div>
   </nav>
 </header>

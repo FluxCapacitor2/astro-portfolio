@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import { SITE_DESCRIPTION } from "../consts";
 import Layout from "../layouts/Layout.astro";
 
 const posts = await getCollection("blog");
@@ -21,7 +22,6 @@ const featuredProjects = (await getCollection("projects")).filter(
 );
 ---
 
-<!doctype html>
 <Layout>
   <main>
     <section class="prose my-36 text-center">
@@ -30,8 +30,7 @@ const featuredProjects = (await getCollection("projects")).filter(
       </h1>
 
       <p class="text-balance text-center">
-        I'm a passionate developer and creator with an interest in web
-        development and design, video production, and cybersecurity.
+        {SITE_DESCRIPTION}
       </p>
 
       <div class="flex justify-center gap-2">
