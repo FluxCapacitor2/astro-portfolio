@@ -4,6 +4,7 @@ kind: "website"
 name: "Easysearch"
 image: ./easysearch-cover-image.png
 description: Add a search function to your website quickly and easily. Easysearch builds and maintains a search index for you by crawling your site.
+link: https://easysearch.bswanson.dev
 source: https://github.com/FluxCapacitor2/easysearch
 date: 2024-07-15
 addedDate: 2024-09-06
@@ -115,7 +116,7 @@ The design is still a work in progress, but I'm proud of what I've achieved on m
 
 ## What I've Learned
 
-**Prioritize simplicity over scalability.**
+**At the beginning, prioritize simplicity over scalability.**
 
 When I started building Easysearch, I chose to run a single worker, build the dashboard and marketing site as static sites, and use SQLite instead of a client-server database. These decisions have made it so much easier to add and deploy new features, and I can continue to scale vertically until I have so many users that it would be very lucrative to invest in horizontal scaling.
 
@@ -133,7 +134,7 @@ I've also done a [deep dive into SQLite's internals](/blog/exploring-sqlite-inte
 
 Typically, for a web app, I would look for off-the-shelf solutions like [NextAuth](https://authjs.dev/), but I've always ended up having issues with prebuilt solutions. It's really difficult to design an abstraction that hides the complexity of authentication while giving the API consumer enough control to build the features they need, and none of the libraries I've tried get it completely right, so you always end up using undocumented APIs or bypsasing the library and interacting with account records directly in the database.
 
-Learning about authentication systems also required me to learn about securing web services, which is knowledge I'm thankful for.
+Learning about authentication systems also required me to learn more about securing web services, which is knowledge I'm thankful for.
 
 ## Technologies
 
