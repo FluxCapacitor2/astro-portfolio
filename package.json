@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.3",
+    "@astrojs/mdx": "^4.0.7",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
@@ -23,6 +23,7 @@
     "@iconify-json/simple-icons": "^1.1.108",
     "@tailwindcss/typography": "^0.5.13",
     "astro": "^5.1.1",
+    "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.0",
     "clsx": "^2.1.1",
     "rehype-pretty-code": "^0.13.2",

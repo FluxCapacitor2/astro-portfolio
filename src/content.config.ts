@@ -3,7 +3,7 @@ import { defineCollection, z } from "astro:content";
 import { technologies } from "./consts";
 
 export const blog = defineCollection({
-  loader: glob({ pattern: "[^_]*/*.md", base: "src/content/blog" }),
+  loader: glob({ pattern: "[^_]*/*.{md,mdx}", base: "src/content/blog" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -15,7 +15,7 @@ export const blog = defineCollection({
 });
 
 export const projects = defineCollection({
-  loader: glob({ pattern: "[^_]*/*.md", base: "src/content/projects" }),
+  loader: glob({ pattern: "[^_]*/*.{md,mdx}", base: "src/content/projects" }),
   schema: ({ image }) =>
     z.object({
       sortOrder: z.number(),

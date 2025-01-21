@@ -20,10 +20,13 @@ tags:
   - tailwind
 ---
 
+import { YouTube } from "astro-embed";
+
 Easysearch is a simple way to add search to your website. You start it up with your site's URL, and it will find every page using a web crawler and build a search index for you. It comes with a prebuilt search page, or you can use the JSON results API for complete customization.
 
 ## Table of Contents
 
+- [Demo Video](#demo-video)
 - [Why?](#why)
 - [Key Features](#key-features)
 - [The Open-Core Model](#the-open-core-model)
@@ -32,6 +35,13 @@ Easysearch is a simple way to add search to your website. You start it up with y
 - [What I've Learned](#what-ive-learned)
 - [Technologies](#technologies)
 - [Setup, Configuration, and Development](#setup-configuration-and-development)
+
+## Demo Video
+
+<YouTube
+  title="Easysearch Demo"
+  id="https://www.youtube.com/watch?v=mccURqQkOBo"
+/>
 
 ## Why?
 
@@ -63,7 +73,7 @@ Inspired by [Gatus](https://gatus.io/)'s business model, I created a proprietary
 
 ![](./open-core-diagram.png)
 
-<!-- Diagram created with Excalidraw: https://excalidraw.com/#json=V14mQlu_5Z34EQcKBqiGJ,duqNqb9V62Xg1bEjtMKjyQ -->
+{/* Diagram created with Excalidraw: https://excalidraw.com/#json=V14mQlu_5Z34EQcKBqiGJ,duqNqb9V62Xg1bEjtMKjyQ */}
 
 ## Diving Into Go and SQLite
 
@@ -109,8 +119,22 @@ I think it turned out really well, especially considering I don't have any forma
 
 I'm also really satisfied with these small animations on the home page.
 
-<video loading="lazy" preload="none" data-src="/content/projects/easysearch/tree-animation.webm" autoplay controls loop></video>
-<video loading="lazy" preload="none" data-src="/content/projects/easysearch/hybrid-search-animation.webm" autoplay controls loop></video>
+<video
+  loading="lazy"
+  preload="none"
+  data-src="/content/projects/easysearch/tree-animation.webm"
+  autoplay
+  controls
+  loop
+></video>
+<video
+  loading="lazy"
+  preload="none"
+  data-src="/content/projects/easysearch/hybrid-search-animation.webm"
+  autoplay
+  controls
+  loop
+></video>
 
 The design is still a work in progress, but I'm proud of what I've achieved on my own.
 
