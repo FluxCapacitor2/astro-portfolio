@@ -1,39 +1,68 @@
-@import url("@fontsource-variable/outfit");
+@import url("@fontsource-variable/outfit") layer(base);
+@import url("./typography.css") layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Global styles */
+@theme {
+  --font-sans:
+    "Outfit Variable", "Outfit", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-primary-50: var(--color-blue-50);
+  --color-primary-100: var(--color-blue-100);
+  --color-primary-200: var(--color-blue-200);
+  --color-primary-300: var(--color-blue-300);
+  --color-primary-400: var(--color-blue-400);
+  --color-primary-500: var(--color-blue-500);
+  --color-primary-600: var(--color-blue-600);
+  --color-primary-700: var(--color-blue-700);
+  --color-primary-800: var(--color-blue-800);
+  --color-primary-900: var(--color-blue-900);
+  --color-primary-950: var(--color-blue-950);
 
-:root {
-  --bg-surface: theme(colors.white);
-  --bg-page: theme(colors.neutral.100);
-  --border-color: theme(colors.neutral.200);
+  --color-page: var(--bg-page);
+  --color-border: var(--border-color);
+  --color-surface: var(--bg-surface);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-surface: theme(colors.black);
-    --bg-page: theme(colors.neutral.900);
-    --border-color: theme(colors.neutral.800);
-    color-scheme: dark;
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border-color, currentColor);
+  }
+
+  button {
+    cursor: pointer;
   }
 }
 
-html {
-  @apply bg-page dark:text-white print:bg-inherit;
-}
+@layer utilities {
+  /* Global styles */
 
-/* Using :where to decrease specificity */
-:where(*) {
-  @apply border-border;
-}
+  :root {
+    --bg-surface: var(--color-white);
+    --bg-page: var(--color-neutral-100);
+    --border-color: var(--color-neutral-200);
+  }
 
-@layer components {
-  /* Always invert prose colors in dark mode */
-  .prose {
-    @apply dark:prose-invert;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-surface: var(--color-black);
+      --bg-page: var(--color-neutral-900);
+      --border-color: var(--color-neutral-800);
+      color-scheme: dark;
+    }
+  }
+
+  html {
+    @apply bg-page dark:text-white print:bg-inherit;
+  }
+
+  /* Using :where to decrease specificity */
+  :where(*) {
+    @apply border-border;
   }
 }
 
@@ -86,10 +115,10 @@ span[data-rehype-pretty-code-fragment] > code {
 }
 
 [data-highlighted-line] {
-  @apply -ml-4 border-l-4 border-l-primary-500 pl-3;
+  @apply border-l-primary-500 -ml-4 border-l-4 pl-3;
 }
 
 [data-highlighted-line],
 [data-highlighted-line] span {
-  @apply !bg-[#e5f3ff] dark:!bg-[#313944];
+  @apply bg-[#e5f3ff]! dark:bg-[#313944]!;
 }
