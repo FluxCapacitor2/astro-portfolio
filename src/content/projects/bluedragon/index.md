@@ -26,13 +26,13 @@ active: true
 
 BlueDragon is a network of custom _Minecraft_ servers, built with Kotlin and the [Minestom](https://minestom.net/) library, orchestrated in a Kubernetes cluster along with a proxy, database, and queue service.
 
-It is a team effort between me and my brother, [Tyler](https://www.tswanson.dev/). I mainly handle the infrastructure, inter-process communication (IPC), and underlying utilities, while he handles most of the game design and programming.
+It is a team effort between me and my brother, [Tyler](https://www.tswanson.dev/). I mainly handle the infrastructure, inter-service messaging, and underlying utilities, while he handles most of the game design and programming.
 
 We have been iterating on BlueDragon since 2019, and in the process, I've learned so much about system design, build and deployment tools, CI/CD, programming best practices, and more.
 
 ## How To Play
 
-1. Open up Minecraft 1.21 or 1.21.1.
+1. Open up Minecraft 1.21.5.
 2. Click "Multiplayer", then "Add Server".
 3. Enter `bluedragonmc.com` in the address bar and click "Done".
 4. Finally, double-click on the server in your server list.
@@ -43,7 +43,7 @@ On our website, we have a [list of games](https://bluedragonmc.com/games) availa
 
 BlueDragon started on July 1st, 2016 as a Minecraft factions server that disallowed raiding; we called this game mode "clans". Clans were groups of players who would collaborate to gather resources, build bases, and fight other clans during planned events.
 
-In 2017, added more typical Minecraft game modes, including SkyBlock (collaborative survival on an island with limited resources) and Prison (mining valuable ores to make progress towards accessing even more valuable resources).
+In 2017, we added more typical Minecraft game modes, including SkyBlock (collaborative survival on an island with limited resources) and Prison (mining valuable ores to make progress towards accessing even more valuable resources).
 At this time, we made a few [custom](https://github.com/FluxCapacitor2/DragonInventoryFull) [plugins](https://github.com/FluxCapacitor2/DragonRanks), but we mainly stuck to off-the-shelf solutions.
 
 In 2019, after struggling to find the classic [Spleef](https://minecraft.wiki/w/Spleef) game mode on any popular Minecraft servers, we decided to [create our own](https://github.com/FluxCapacitor2/BDSpleef). This was the first custom plugin that Tyler and I wrote for the server.
