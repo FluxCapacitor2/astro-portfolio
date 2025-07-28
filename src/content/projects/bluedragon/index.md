@@ -32,7 +32,7 @@ We have been iterating on BlueDragon since 2019, and in the process, I've learne
 
 ## How To Play
 
-1. Open up Minecraft 1.21.5.
+1. Open up Minecraft 1.21.8.
 2. Click "Multiplayer", then "Add Server".
 3. Enter `bluedragonmc.com` in the address bar and click "Done".
 4. Finally, double-click on the server in your server list.
