@@ -11,31 +11,31 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.3.4",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.5.1",
-    "@astrojs/vercel": "^8.2.7",
-    "@fontsource-variable/outfit": "^5.2.5",
-    "@iconify-json/devicon-plain": "^1.2.20",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/mdx": "^7.0.3",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vercel": "^11.0.3",
+    "@fontsource-variable/outfit": "^5.2.8",
+    "@iconify-json/devicon-plain": "^1.2.57",
     "@iconify-json/mdi": "^1.2.3",
-    "@iconify-json/simple-icons": "^1.2.29",
-    "@tailwindcss/vite": "^4.0.15",
-    "astro": "^5.13.5",
-    "astro-embed": "^0.9.0",
+    "@iconify-json/simple-icons": "^1.2.90",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.1",
+    "astro-embed": "^0.13.1",
     "astro-icon": "^1.1.5",
     "clsx": "^2.1.1",
-    "rehype-pretty-code": "^0.14.1",
-    "tailwind-merge": "^3.0.2",
-    "tailwindcss": "^4.0.15",
-    "typescript": "^5.8.2"
+    "rehype-pretty-code": "^0.14.4",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.0"
   },
   "devDependencies": {
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.0",
-    "prettier": "^3.5.3",
+    "lint-staged": "^17.1.0",
+    "prettier": "^3.9.5",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11"
+    "prettier-plugin-tailwindcss": "^0.8.1"
   },
   "lint-staged": {
     "*.{js,ts,css,md,mdx,astro}": "prettier --write"

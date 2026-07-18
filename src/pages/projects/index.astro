@@ -6,31 +6,33 @@ import TechStack from "../../components/TechStack.astro";
 import Layout from "../../layouts/Layout.astro";
 import { cn } from "../../utils/cn";
 
-const projects = (await getCollection("projects")).sort((a, b) => {
-  const featuredDifference = Number(b.data.featured) - Number(a.data.featured);
-  if (featuredDifference !== 0) return featuredDifference;
-  const orderDiff = a.data.sortOrder - b.data.sortOrder;
-  if (orderDiff != 0) {
-    return orderDiff;
-  }
-  return b.data.date.valueOf() - a.data.date.valueOf();
-});
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.unlisted)
+  .sort((a, b) => {
+    const featuredDifference =
+      Number(b.data.featured) - Number(a.data.featured);
+    if (featuredDifference !== 0) return featuredDifference;
+    const orderDiff = a.data.sortOrder - b.data.sortOrder;
+    if (orderDiff != 0) {
+      return orderDiff;
+    }
+    return b.data.date.valueOf() - a.data.date.valueOf();
+  });
 ---
 
 <Layout>
   <main>
     <h1 class="my-12 text-center text-4xl font-semibold">Projects</h1>
     <a class="block" href="https://github.com/FluxCapacitor2/" target="_blank">
-      <div class="mb-8 flex gap-4 rounded-lg border bg-surface p-4 shadow-md">
+      <div class="bg-surface mb-8 flex gap-4 rounded-lg border p-4 shadow-md">
         <Icon name="simple-icons:github" class="size-20" />
         <div>
           <h2 class="text-2xl font-medium">GitHub</h2>
           <p>
-            Check out <span class="font-medium underline"
-              >my GitHub profile</span
-            >
-            for a complete list of personal projects and contributions to other open-source
-            projects.
+            Check out <span class="font-medium underline">
+              my GitHub profile
+            </span> for a complete list of personal projects and contributions to
+            other open-source projects.
           </p>
         </div>
       </div>
@@ -43,12 +45,10 @@ const projects = (await getCollection("projects")).sort((a, b) => {
               class={cn(
                 "col-span-2 lg:col-span-1",
                 project.data.featured && "lg:col-span-2"
-              )}
-            >
+              )}>
               <a
                 href={`/projects/${project.id}/`}
-                aria-label={project.data.name}
-              >
+                aria-label={project.data.name}>
                 <Image
                   height={project.data.featured ? 384 : 256}
                   src={project.data.image}
@@ -62,8 +62,7 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                 />
                 <h2
                   class="mt-2 text-2xl font-bold"
-                  transition:name={`project ${project.id} name`}
-                >
+                  transition:name={`project ${project.id} name`}>
                   {project.data.name}
                 </h2>
                 <TechStack
@@ -72,8 +71,7 @@ const projects = (await getCollection("projects")).sort((a, b) => {
                 />
                 <p
                   class="mt-2"
-                  transition:name={`project ${project.id} description`}
-                >
+                  transition:name={`project ${project.id} description`}>
                   {project.data.description}
                 </p>
               </a>

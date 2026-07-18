@@ -13,7 +13,7 @@ Strapi doesn't expose a way to customize this page with plugins, so I had to fin
 There are a few ways to do this:
 
 - Maintaining a fork of Strapi
-- Using [patch-package](https://www.npmjs.com/package/patch-package) to patch the [component]()
+- Using [patch-package](https://www.npmjs.com/package/patch-package) to patch the [component](<>)
 - Writing a workaround without modifying the package
 
 I went with (what seemed to be) the simplest option available to me and decided to write a workaround.

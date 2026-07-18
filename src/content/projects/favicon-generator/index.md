@@ -14,6 +14,7 @@ tags:
   - react
   - vercel
   - tailwind
+unlisted: true
 ---
 
 ## Features

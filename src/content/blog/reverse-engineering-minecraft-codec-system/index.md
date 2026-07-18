@@ -117,7 +117,7 @@ at knot//net.minecraft.component.ComponentChanges$3.decode(ComponentChanges.java
 at knot//net.minecraft.component.ComponentChanges$3.decode(ComponentChanges.java:76)
 ```
 
-As of Minecraft 1.20.5, `ItemStack`s contain data components, which are sent over the network as a map of changes from the item material's "prototype" - the components that it has by default. For example, elytras have the `minecraft:equippable` and `minecraft:glider` components by default, so unless they've been manually changed, the game doesn't need to waste bandwidth transmitting them. That's where the name [`ComponentChanges`]() comes from.
+As of Minecraft 1.20.5, `ItemStack`s contain data components, which are sent over the network as a map of changes from the item material's "prototype" - the components that it has by default. For example, elytras have the `minecraft:equippable` and `minecraft:glider` components by default, so unless they've been manually changed, the game doesn't need to waste bandwidth transmitting them. That's where the name [`ComponentChanges`](<>) comes from.
 
 ```java
 at knot//net.minecraft.component.Component$1.read(Component.java:18)

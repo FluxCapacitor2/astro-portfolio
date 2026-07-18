@@ -12,4 +12,6 @@ export default {
   trailingComma: "es5",
   semi: true,
   singleQuote: false,
+  bracketSameLine: true,
+  htmlWhitespaceSensitivity: "ignore",
 };

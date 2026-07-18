@@ -1,6 +1,6 @@
 export const SITE_TITLE = "Brendan Swanson";
 export const SITE_DESCRIPTION =
-  "I'm a passionate developer and creator with an interest in web development and design, video production, and cybersecurity.";
+  "I'm a student and software developer interested in backend development, DevOps, and cloud-native technologies.";
 
 export const technologies: Record<
   string,

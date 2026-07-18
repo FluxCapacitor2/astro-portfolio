@@ -48,21 +48,26 @@ const featuredProjects = (await getCollection("projects")).filter(
       <div class="prose">
         <p>
           I am a Computer Science student at North Carolina State University,
-          and I have been doing computer programming as a hobby for over 6 years
-          because I love solving complex problems.
+          and I have been doing computer programming as a hobby for about {
+            new Date().getFullYear() - 2017
+          } years because I love solving complex problems. I'm currently the president
+          of NCSU's App Development Club and a member of the Computer Science Student
+          Ambassadors.
         </p>
         <p>
-          I've built projects like <a href="https://github.com/BlueDragonMC/"
-            >BlueDragon</a
-          > (Kubernetes, gRPC, Kotlin, Next.js, MongoDB), <a
-            href="https://github.com/FluxCapacitor2/easysearch/">Easysearch</a
-          > (Go, SQLite), and a <a href="https://www.bswanson.dev/projects/ctf/"
-            >capture-the-flag recruitment challenge</a
-          > (Next.js, Docker, SQLite) for my high school&#39;s cybersecurity team.
+          In my free time, I've built projects like <a
+            href="/projects/bluedragon">
+            BlueDragon
+          </a> (a cloud-native Minecraft server network on Kubernetes) and <a
+            href="/projects/easysearch/">
+            Easysearch
+          </a> (a full-text and semantic search indexer, crawler, and API).
         </p>
         <p>
-          I&#39;m currently interning at Purdue University's Rosen Center for
-          Advanced Computing to build a platform-as-a-service for Kubernetes.
+          I&#39;m currently interning at <a href="https://lucid.co/">
+            Lucid Software
+          </a>, working on improving the speed and reliability of their
+          end-to-end tests.
         </p>
       </div>
     </section>
@@ -81,8 +86,7 @@ const featuredProjects = (await getCollection("projects")).filter(
           <div class="prose flex flex-col">
             <h3
               class="mb-0 text-xl"
-              transition:name={`post ${latestPost.id} title`}
-            >
+              transition:name={`post ${latestPost.id} title`}>
               {latestPost.data.title}
             </h3>
             <p class="mt-0 mb-4">
@@ -93,8 +97,7 @@ const featuredProjects = (await getCollection("projects")).filter(
             </p>
             <p
               class="my-0"
-              transition:name={`post ${latestPost.id} description`}
-            >
+              transition:name={`post ${latestPost.id} description`}>
               {latestPost.data.description}
             </p>
           </div>
@@ -127,21 +130,18 @@ const featuredProjects = (await getCollection("projects")).filter(
               <div class="prose flex flex-col">
                 <h3
                   class="mb-0 text-xl"
-                  transition:name={`project ${featuredProject.id} name`}
-                >
+                  transition:name={`project ${featuredProject.id} name`}>
                   {featuredProject.data.name}
                 </h3>
                 <p
                   class="mt-0 mb-4"
-                  transition:name={`project ${featuredProject.id} date`}
-                >
+                  transition:name={`project ${featuredProject.id} date`}>
                   <FormattedDate date={featuredProject.data.date} />
                   {featuredProject.data.ongoing && <>&mdash;Present</>}
                 </p>
                 <p
                   class="my-0"
-                  transition:name={`project ${featuredProject.id} description`}
-                >
+                  transition:name={`project ${featuredProject.id} description`}>
                   {featuredProject.data.description}
                 </p>
               </div>

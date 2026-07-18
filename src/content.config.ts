@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { z } from "astro/zod";
+import { defineCollection } from "astro:content";
 import { technologies } from "./consts";
 
 export const blog = defineCollection({
@@ -35,6 +36,7 @@ export const projects = defineCollection({
       link: z.string().url().optional(),
       source: z.string().url().optional(),
       featured: z.boolean().optional().default(false),
+      unlisted: z.boolean().optional().default(false),
     }),
 });
 

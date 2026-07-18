@@ -11,6 +11,7 @@ addedDate: 2023-05-27
 tags:
   - solid
   - vite
+unlisted: true
 ---
 
 ## Purpose
